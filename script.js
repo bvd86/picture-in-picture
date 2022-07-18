@@ -1,5 +1,5 @@
 const videoElement = document.getElementById('video');
-const buttonElement = document.getElementById('button');
+const button = document.getElementById('button');
 
 // Prompt to select media screen
 async function selectScreen() {
@@ -14,6 +14,12 @@ async function selectScreen() {
     console.log('Whoops, Error Here:', error)
   }
 }
+
+button.addEventListener('click', async () => {
+  button.disabled = true;
+  await videoElement.requestPictureInPicture();
+  button.disabled = false;
+});
 
 // Call function
 selectScreen();
